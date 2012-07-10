@@ -1,0 +1,36 @@
+<div class="ajax_container">
+<script src="/Public/js/valid.js" type="text/javascript"></script>
+  <form name="ajaxform_update" action="{:U('ajax_update')}" method="post" id="ajaxform_add" class="form-horizontal">
+    <fieldset>
+    <input type="hidden" name="id" value="{$vo.id}"/>
+      <table  align="center" class="table table-bordered  table-striped">
+        <tr>
+          <td align="left">{$Think.lang.L_CURRENT_PATH}: {$Think.lang.L_PLUGIN_MANAGE} > {$Think.lang.L_PLUGIN_CATGORY_MANAGE} > {$Think.lang.L_EDIT}</td>
+        </tr>
+      </table>
+      <div class="control-group">
+        <label for="name" class="control-label">{$Think.lang.L_NAME}</label>
+        <div class="controls">
+          <input type="text" id="name" class="input-xlarge" name="name" maxlength="200" value="{$vo.name}" vtype="notempty" tips="{$Think.lang.L_JS_FIELD_REQUIRE}"   onkeyup="doValidate(this)" />
+          <span class="help-inline"></span>
+          <p class="help-block">{$Think.lang.L_VALIDATE_REQUESTED}</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="value" class="control-label">{$Think.lang.L_SLUG}</label>
+        <div class="controls">
+          <input type="text" id="value" class="input-xlarge" name="slug" maxlength="200" value="{$vo.slug}" vtype="username" tips="{$Think.lang.L_JS_FIELD_MUST_CHAR_NUMBER_SLASH}" onkeyup="doValidate(this)"/>
+          <span class="help-inline"></span>
+          <p class="help-block">{$Think.lang.L_VALIDATE_USERNAME}</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="active" class="control-label">{$Think.lang.L_STATUS}</label>
+        <div class="controls"> {$DROPDOWN_STATUS} </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit"  >{$Think.lang.L_SUBMIT}</button>
+      </div>
+    </fieldset>
+  </form>
+  &nbsp; </div>

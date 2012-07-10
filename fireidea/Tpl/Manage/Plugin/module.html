@@ -1,0 +1,34 @@
+<include file="Public:header" />
+<ul class="nav nav-pills">
+  <li ><a href="{:U("DBManage/module?id=".$modinfo["id"])}">{$Think.lang.L_MODULE_DB_MANAGE}</a></li>
+  <li class="active"><a href="{:U("Plugin/module?id=".$modinfo["id"])}">{$Think.lang.L_PLUGIN_REFRENCE}</a></li>
+  <li><a href="{:U("Workflow/index?id=".$modinfo["id"])}">{$Think.lang.L_WORKFLOW_MANAGE}</a></li>
+  <li><a href="{:U("API/module?id=".$modinfo["id"])}">{$Think.lang.L_API_MANAGE}</a></li>
+</ul>
+<table align="center" class="table table-bordered table-striped">
+  <tr>
+    <th>{$Think.lang.L_NAME}</th>
+    <th>{$Think.lang.L_DESCRIPTION}</th>
+    <th width="70">{$Think.lang.L_OP}</th>
+  </tr>
+  <volist name="vo" id="vb">
+    <tr align="center">
+      <td align="left">{$vb.name|L} </td>
+      <td>{$vb.note}</td>
+      <td><notempty name="vb.plugin_keyword">
+          <div class="btn-group">
+            <button data-toggle="dropdown" class="btn dropdown-toggle">{$Think.lang.L_OP} <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <volist name="vb.link" id="link">
+              <li><a href="{$link.link|U}">{$link.name|L}</a></li>
+              </volist>
+              <li class="divider"></li>
+              <li><a href="{:U('pluguninstall?id='.$vb['id'].'&module='.$_GET['id'])}">{$Think.lang.L_PLUGIN_UNINSTALL}</a></li>
+            </ul>
+          </div>
+          <else/>
+          <a class="btn btn-primary"  href="{:U('pluginstall?id='.$vb['id'].'&module='.$_GET['id'])}">{$Think.lang.L_PLUGIN_INSTALL}</a> </notempty></td>
+    </tr>
+  </volist>
+</table>
+<include file="Public:footer" /> 

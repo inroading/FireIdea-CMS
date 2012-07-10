@@ -1,0 +1,39 @@
+<include file="Public:header" />
+<form action="{:U('update')}" method="post" name="fomr1" class="form-horizontal" >
+  <fieldset>
+    <input type="hidden" value="{$vo.id}" name="id" />
+    <div class="control-group">
+      <label for="name" class="control-label">{$Think.lang.L_NAME}</label>
+      <div class="controls">
+        <input type="text" id="name" class="input-xlarge" name="name" maxlength="100" value="{$vo.name}" vtype="notempty" tips="{$Think.lang.L_JS_FIELD_REQUIRE}"   onkeyup="doValidate(this)"  />
+        <span class="help-inline"></span>
+        <p class="help-block">{$Think.lang.L_VALIDATE_REQUESTED}</p>
+      </div>
+    </div>
+    <div class="control-group">
+      <label for="keyword" class="control-label">{$Think.lang.L_SLUG}</label>
+      <div class="controls">
+        <input type="text" id="keyword" class="input-xlarge disable" name="keyword" maxlength="20" disabled="disabled" value="{$vo.keyword}" vtype="username" tips="{$Think.lang.L_JS_FIELD_MUST_CHAR_NUMBER_SLASH}" onkeyup="doValidate(this)"/>
+        <span class="help-inline"></span>
+        <p class="help-block">{$Think.lang.L_VALIDATE_USERNAME}</p>
+      </div>
+    </div>
+    <div class="control-group">
+      <label for="displayorder" class="control-label">{$Think.lang.L_ORDER}</label>
+      <div class="controls">
+        <input type="text" id="displayorder" class="input-xlarge" name="displayorder" value="{$vo.displayorder}" maxlength="4" vtype="notempty|num" tips="{$Think.lang.L_JS_FIELD_REQUIRE}|{$Think.lang.L_JS_FIELD_MUST_NUMBER}"   onkeyup="doValidate(this)"/>
+        <span class="help-inline"></span>
+        <p class="help-block">{$Think.lang.L_VALIDATE_NUMER}</p>
+      </div>
+    </div>
+    <div class="control-group">
+      <label for="active" class="control-label">{$Think.lang.L_STATUS}</label>
+      <div class="controls"> {$DROPDOWN_STATUS} </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">{$Think.lang.L_SUBMIT}</button>
+      <button class="btn" type="reset">{$Think.lang.L_RESET}</button>
+    </div>
+  </fieldset>
+</form>
+<include file="Public:footer" /> 

@@ -1,0 +1,20 @@
+<div class="ajax_container">
+  <form name="ajaxform_add" action="{:U('index')}" method="get" id="ajaxform_add" class="form-horizontal">
+    <fieldset>
+      <table  align="center" class="table table-bordered  table-striped">
+        <tr>
+          <td align="left">{$Think.lang.L_CURRENT_PATH}: {$Think.lang.L_PLUGIN_MANAGE} > {$Think.lang.L_PLUGIN_TAG_MANAGE} > {$Think.lang.L_SEARCH}</td>
+        </tr>
+      </table>
+      <div class="control-group">
+        <label for="name" class="control-label">{$Think.lang.L_NAME}</label>
+        <div class="controls">
+          <input type="text" id="keyword" class="input-xlarge" name="keyword" maxlength="100" value="" />
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit"  >{$Think.lang.L_SEARCH}</button>
+      </div>
+    </fieldset>
+  </form>
+  &nbsp; </div>

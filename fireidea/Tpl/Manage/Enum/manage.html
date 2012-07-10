@@ -1,0 +1,52 @@
+<div class="ajax_container"> 
+  <script>
+	function do_update()
+	{
+		requesthtml("{:U('update_item')}",$("#ajaxform").serialize(),true);
+	}
+	
+	function do_add(gid)
+	{
+	  requesthtml("{:U('add_item')}","gid="+gid,true);
+	}
+	
+	function do_delete(id)
+	{
+	  if(confirm('{$Think.lang.L_ARE_YOU_SURE}'))
+	  {
+		requesthtml("{:U('del_item')}","id="+id,true);
+	  }
+	}
+</script>
+  <form name="ajaxform" action="#" method="post" id="ajaxform">
+  <input type="hidden" name="groupid" value="{$record.id}"/>
+    <table  align="center" class="table table-bordered  table-striped">
+      <tr>
+        <td align="left">{$Think.lang.L_CURRENT_PATH}: {$Think.lang.L_PLUGIN_ENUM_MANAGE} > {$Think.lang.L_PLUGIN_ENUM_ITEM}</td>
+        <td width="40"><a href="javascript:do_add({$record.id});">{$Think.lang.L_ADD}</a></td>
+      </tr>
+    </table>
+    <table  border="0" cellpadding="0" cellspacing="0" class="table table-bordered table-striped">
+      <tr>
+        <th>{$Think.lang.L_NAME}</th>
+        <th>{$Think.lang.L_VALUE}</th>
+        <th>{$Think.lang.L_DESCRIPTION}</th>
+        <th>{$Think.lang.L_OP}</th>
+      </tr>
+      <volist name="vo" id="vo">
+        <tr>
+          <td><input name="id[]" value="{$vo.id}" type="hidden" />
+            <input name="name[]" type="text" value="{$vo.name}" size="17"  class="require"/></td>
+          <td><input name="value[]" type="text" value="{$vo.value}" size="17" class="require"/></td>
+          <td><input name="note[]" type="text" value="{$vo.note}" size="22" maxlength="255" class=""/></td>
+          <td><a href="javascript:do_delete({$vo.id})" >{$Think.lang.L_DELETE}</a></td>
+        </tr>
+      </volist>
+    </table>
+    <table  align="center"  >
+      <tr>
+        <td align="center"><input type="button" value="{$Think.lang.L_SUBMIT}" onclick="do_update()"  class="btn btn-primary"/></td>
+      </tr>
+    </table>
+  </form>
+</div>

@@ -1,0 +1,22 @@
+<include file="Public:header" />
+<table align="center" class="table table-bordered table-striped">
+  <tr>
+    <th width="2%"><input type="checkbox" value="-1" name="docheck" onclick="bindSelectValue('list_select[]',this.checked);"/></th>
+    <th>{$Think.lang.L_NAME}</th>
+    <th width="50">{$Think.lang.L_STATUS}</th>
+    <th width="60">{$Think.lang.L_OP}</th>
+  </tr>
+  <volist name="list" id="vo">
+    <tr align="center">
+      <td><input type="checkbox" value="{$vo.id}" name="list_select[]"/></td>
+      <td align="left">{$vo.name}</td>
+      <td><eq name="vo.active" value="0"><i class="icon-remove" title="{$Think.lang.L_DISABLE}"></i></eq>
+        <eq name="vo.active" value="1"><i class="icon-ok" title="{$Think.lang.L_ENABLE}"></i></eq></td>
+      <td><a href="{:U("edit?id=".$vo["id"])}" ><i class="icon-edit" title="{$Think.lang.L_EDIT}"></i></a>&nbsp;<a href="{:U("DBManage/module?id=".$vo["id"])}" ><i title="{$Think.lang.L_MANAGE}" class="icon-list"></i></a>&nbsp;<a href="#" onclick="confim_del('{$Think.lang.L_ARE_YOU_SURE}','{:U('del?id='.$vo['id'])}');" ><i class="icon-remove" title="{$Think.lang.L_DELETE}" ></i></a></td>
+    </tr>
+  </volist>
+  <tr>
+    <td colspan="4" ><a href="{:U('add')}" title="{$Think.lang.L_ADD}"><i class="icon-plus"></i></a></td>
+  </tr>
+</table>
+<include file="Public:footer" /> 

@@ -1,0 +1,36 @@
+INSERT INTO `fi_menu` (`id`, `name`, `shortkey`, `type`, `module`, `action`, `parent`, `displayorder`) VALUES
+(NULL, 'L_ADMIN_HOME', 'ADMIN_HOME', 'admin_menu', 'Index', 'index', '', 0),
+(NULL, 'L_ADMIN_HOME', 'ADMIN_HOME_GROUP', 'admin_menu', '', '', 'ADMIN_HOME', 0),
+(NULL, 'L_ADMIN_INFO', 'ADMIN_INFO', 'admin_menu', 'Index', 'index', 'ADMIN_HOME_GROUP', 0),
+(NULL, 'L_SYSTEM_MANAGE', 'SYSTEM_MANAGE', 'admin_menu', 'System', 'index', 'ADMIN_HOME_GROUP', 0),
+(NULL, 'L_COPYRIGHT', 'ADMIN_COPYRIGHT', 'admin_menu', 'Copyright', 'index', 'ADMIN_HOME_GROUP', 0),
+(NULL, 'L_DATA_MANAGE', 'DATA_MANAGE', 'admin_menu', 'Data', 'index', '', 0),
+(NULL, 'L_CHANNEL_MANAGE', 'CHANNEL_MANAGE', 'admin_menu', 'Channel', 'index', '', 0),
+(NULL, 'L_CHANNEL_MANAGE', 'CHANNEL_MANAGE_GROUP', 'admin_menu', '', '', 'CHANNEL_MANAGE', 0),
+(NULL, 'L_TEMPLATE_MANAGE', 'TEMPLATE_MANAGE', 'admin_menu', 'Template', 'index', '', 0),
+(NULL, 'L_TEMPLATE_MANAGE', 'TEMPLATE_MANAGE_GROUP', 'admin_menu', '', '', 'TEMPLATE_MANAGE', 0),
+(NULL, 'L_MODULE_MANAGE', 'MODULE_MANAGE', 'admin_menu', 'Module', 'index', '', 0),
+(NULL, 'L_MODULE_MANAGE', 'MODULE_MANAGE_GROUP', 'admin_menu', '', '', 'MODULE_MANAGE', 0),
+(NULL, 'L_MODULE_CONFIG', 'MODULE_CONFIG', 'admin_menu', 'Module', 'index', 'MODULE_MANAGE_GROUP', 0),
+(NULL, 'L_PLUGIN_MANAGE', 'PLUGIN_MANAGE', 'admin_menu', 'Enum', 'index', '', 0),
+(NULL, 'L_PLUGIN_MANAGE', 'PLUGIN_MANAGE_GROUP', 'admin_menu', '', '', 'PLUGIN_MANAGE', 0),
+(NULL, 'L_PLUGIN_ENUM_MANAGE', 'PLUGIN_ENUM_MANAGE', 'admin_menu', 'Enum', 'index', 'PLUGIN_MANAGE_GROUP', 0),
+(NULL, 'L_PLUGIN_CATGORY_MANAGE', 'PLUGIN_CATGORY_MANAGE', 'admin_menu', 'Category', 'index', 'PLUGIN_MANAGE_GROUP', 0),
+(NULL, 'L_PLUGIN_TAG_MANAGE', 'PLUGIN_TAG_MANAGE', 'admin_menu', 'Tag', 'index', 'PLUGIN_MANAGE_GROUP', 0),
+(NULL, 'L_PLUGIN_ATTR_MANAGE', 'PLUGIN_ATTR_MANAGE', 'admin_menu', 'Attr', 'index', 'PLUGIN_MANAGE_GROUP', 0),
+(NULL, 'L_PLUGIN_FILE_MANAGE', 'PLUGIN_FILE_MANAGE', 'admin_menu', 'File', 'index', 'PLUGIN_MANAGE_GROUP', 0),
+(NULL, 'L_PLUGIN_MAIL_MANAGE', 'PLUGIN_MAIL_MANAGE', 'admin_menu', 'File', 'index', 'PLUGIN_MANAGE_GROUP', 0),
+(NULL, 'L_PLUGIN_PAY', 'PLUGIN_PAY_GROUP', 'admin_menu', '', '', 'PLUGIN_MANAGE', 0),
+(NULL, 'L_PLUGIN_PAY_CONFIG', 'PLUGIN_PAY_CONFIG', 'admin_menu', 'Pay', 'index', 'PLUGIN_PAY_GROUP', 0),
+(NULL, 'L_PLUGIN_PAY_HISTORY_MANAGE', 'PLUGIN_PAY_HISTORY_MANAGE', 'admin_menu', 'PayHistory', 'index', 'PLUGIN_PAY_GROUP', 0),
+(NULL, 'L_ACCOUNT_MANAGE', 'ACCOUNT_MANAGE', 'admin_menu', 'Account', 'index', '', 0);
+
+
+ 
+//
+(NULL, 'L_ADMIN_MANAGE', 'ADMIN_MANAGE', 'admin_menu', 'Admin','index', 'ACCOUNT_MANAGE', 0),
+(NULL, 'L_ADMIN_GROUP_MANAGE', 'PLUGIN_PAY_HISTORY_MANAGE', 'admin_menu', 'Admingroup/index', 'ACCOUNT_MANAGE', 0),
+(NULL, 'L_USER_MANAGE', 'USER_MANAGE', 'admin_menu', '', 'ACCOUNT_MANAGE', 0),
+(NULL, 'L_USER_CONFIG', 'USER_CONFIG', 'admin_menu', 'User/index', 'USER_MANAGE', 0),
+(NULL, 'L_USER_GROUP_MANAGE', 'USER_GROUP_MANAGE', 'admin_menu', 'Usergroup/index', 'USER_MANAGE', 0),
+(NULL, 'L_USER_SCORE_MANAGE', 'USER_SCORE_MANAGE', 'admin_menu', 'Userscore/index', 'USER_MANAGE', 0);

@@ -1,0 +1,24 @@
+@charset "utf-8";
+/*
+* Name:FireIdea CMS
+*/
+* { padding: 0; margin: 0; outline: 0; }
+body { font-size: 13px; line-height: 1.4; font-family:  "Microsoft YaHei", "Trebuchet MS", Sans-Serif, Arial; text-align: left; }
+a img { border: 0;}
+a, a:link { color: #009; text-decoration: none; cursor: pointer; }
+a:hover { text-decoration: underline;}
+h2, h3, h4, h5, h6 { font-family: "Trebuchet MS", "Microsoft YaHei", "Myriad Pro", Tahoma, Sans-Serif; font-weight: normal; line-height: 1.2; }
+input, textarea, select, button, label { font-family:  "Microsoft YaHei", "Trebuchet MS", Sans-Serif, Arial; font-size: 12px; color: #444; }
+img { padding: 0;  }
+table { width:100%; align:center; border:0; border-collapse:collapse; }
+table .thead { text-align:center; vertical-align:middle; background-color:#036; line-height:2; }
+table .tbhead { text-align:right; vertical-align:middle; padding-right:10px; width:20%; }
+tr, td { line-height:25px; font-size:12px; vertical-align:middle;}
+th{line-height:25px; font-size:12px; vertical-align:middle; text-align:center;}
+.space { display:block; height:5px; clear:both; line-height:0; }
+.clear { display: block; height: 0; font-size: 0; line-height: 0; clear: both; }
+.wrap { margin-left:auto; margin-right:auto; width:99%; }
+/* full name panel */
+#fullname { position: absolute; display:none; border:  #6699ff solid 1px; background-color: #334477; padding:3px; color: #ffffff; width:200px; z-index: 99; }
+#fullname_title { float:left; clear: both; padding:5px; width:180px; word-break:break-all; word-wrap:break-word; }
+#fullname_close { width:184px; height: 10px; float:right; font: 10px; text-align: right; }

@@ -1,0 +1,37 @@
+<include file="Public:header" />
+<form action="{:U('update')}" method="post" name="fomr1" class="form-horizontal" >
+<input type="hidden" value="{$vo.id}" name="id" />
+  <fieldset>
+    <div class="control-group">
+      <label for="name" class="control-label">{$Think.lang.L_NAME}</label>
+      <div class="controls">
+        <input type="text" id="name" class="input-xlarge" name="name" maxlength="100" value="{$vo.name}" vtype="notempty" tips="{$Think.lang.L_JS_FIELD_REQUIRE}"   onkeyup="doValidate(this)"/>
+        <span class="help-inline"></span>
+        <p class="help-block">{$Think.lang.L_VALIDATE_REQUESTED}</p>
+      </div>
+    </div>
+    <div class="control-group">
+      <label   class="control-label">{$Think.lang.L_SLUG}</label>
+      <div class="controls">
+         <input type="text" class="input-xlarge disabled" name="" maxlength="200" value="{$vo.slug}" disabled=""/>
+      </div>
+    </div>
+    <div class="control-group">
+      <label for="active" class="control-label">{$Think.lang.L_STATUS}</label>
+      <div class="controls">
+        {$DROPDOWN_STATUS}
+      </div>
+    </div>
+    <div class="control-group">
+      <label for="textarea" class="control-label">{$Think.lang.L_DESCRIPTION}</label>
+      <div class="controls">
+        <textarea rows="3"  name="description" id="description" class="input-xlarge">{$vo.description}</textarea>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">{$Think.lang.L_SUBMIT}</button>
+      <button class="btn" type="reset">{$Think.lang.L_RESET}</button>
+    </div>
+  </fieldset>
+</form>
+<include file="Public:footer" /> 

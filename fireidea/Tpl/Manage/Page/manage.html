@@ -1,0 +1,47 @@
+<script src="__PUBLIC__/js/jquery-ui-1.8.18.custom.min.js"></script>
+<style>
+.sortable .placeholder { width: 60px; ; float:left; height: 80px; background-color: #FECA40; }
+.sortable li { float: left; width:60px; height:80px; overflow:hidden; display:block; margin-left:10px; }
+.sortable ul { width:100%; float: left; }
+</style>
+<script>
+	$(function() {
+		$( "#sortable" ).sortable({
+			placeholder: 'placeholder',
+			//handle:"i",
+			axis: 'x',
+			items:'li',
+			update: function(event, ui) 
+	        {
+            	$('.sortable .order').each(
+            	    function(index) {
+        	            $(this).val(index+1);
+                });
+	            $.ajax({type: "POST",url: "__URL__/cat_update_order",cache:false,data:$("#form9").serialize()});
+            	//window.location.reload();
+        	}
+		});
+		$( ".draggable" ).draggable({
+			connectToSortable: "#sortable",
+			helper: "clone",
+			revert: "invalid"
+		});
+		//$( "#sortable" ).disableSelection();
+	});
+</script>
+<h3> {$Think.lang.L_LIST_FIELD} </h3>
+<hr />
+<ul class="unstyled sortable ui-sortable" style="clear:right; height:140px;float:left; width:600px; overflow:scroll; overflow-x:hidden;" id="sortable">
+</ul>
+<ul  class="unstyled sortable ui-sortable" style="clear:both; height:140px;">
+  <li class="draggable well">
+    <p>
+      <input type="text" name="headername[]" value="" class="span1"/>
+    </p>
+    <p>
+      <input type="text" name="value[]" value=""  class="span1"/>
+    </p>
+    <input type="hidden" class="order span1" name="order"/>
+  </li>
+</ul>
+<hr />

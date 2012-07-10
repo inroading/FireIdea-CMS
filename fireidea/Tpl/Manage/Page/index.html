@@ -1,0 +1,38 @@
+<include file="Public:header" />
+<script>
+function pagemanage(id)
+{
+  requesthtml("{:U('workflow-mod')}","id="+id ,true);
+}
+</script>
+<ul class="nav nav-pills">
+  <li><a href="{:U("Module/manage?id=".$result["id"])}">{$Think.lang.L_MODULE_DB_MANAGE}</a></li>
+  <li><a href="{:U("Module/plugin?id=".$result["id"])}">{$Think.lang.L_PLUGIN_REFRENCE}</a></li>
+  <li class="active"><a href="{:U("Workflow/index?id=".$result["id"])}">{$Think.lang.L_WORKFLOW_MANAGE}</a></li>
+  <li><a href="{:U("Module/api?id=".$result["id"])}">{$Think.lang.L_API_MANAGE}</a></li>
+</ul>
+<table align="center" class="table table-bordered table-striped">
+  <tr>
+    <th width="2%"><input type="checkbox" value="-1" name="docheck" onclick="bindSelectValue('list_select[]',this.checked);"/></th>
+    <th>{$Think.lang.L_NAME}</th>
+    <th>{$Think.lang.L_DESCRIPTION}</th>
+    <th width="80">{$Think.lang.L_PAGE_TYPE}</th>
+    <th width="60">{$Think.lang.L_OP}</th>
+  </tr>
+  <volist name="list" id="vo">
+    <tr align="center">
+      <td><input type="checkbox" value="{$vo.id}" name="list_select[]"/></td>
+      <td align="left">{$vo.filename}({$vo.name})</td>
+      <td>{$vo.note}</td>
+      <td align="left"><eq name="vo.type" value="0">{$Think.lang.L_PAGE_TYPE_LIST}</eq>
+        <eq name="vo.type" value="1">{$Think.lang.L_PAGE_TYPE_ADD}</eq>
+        <eq name="vo.type" value="2">{$Think.lang.L_PAGE_TYPE_EDIT}</eq></td>
+      <td><a href="{:U("editpage?id=".$vo["id"])}" ><i class="icon-edit" title="{$Think.lang.L_EDIT}"></i></a>&nbsp;<a href='javascript:pagemanage({$vo.id})' ><i title="{$Think.lang.L_MANAGE}" class="icon-th"></i></a>&nbsp;<a href="#" onclick="confim_del('{$Think.lang.L_ARE_YOU_SURE}','{:U('delpage?id='.$vo['id'])}');" ><i class="icon-remove" title="{$Think.lang.L_DELETE}" ></i></a></td>
+    </tr>
+  </volist>
+  <tr>
+    <td colspan="5" ><a href="{:U('addpage?module='.$result['keyword'])}" title="{$Think.lang.L_ADD}"><i class="icon-plus"></i></a>
+      <div class="pull-right">{$page}&nbsp;</div></td>
+  </tr>
+</table>
+<include file="Public:footer" /> 

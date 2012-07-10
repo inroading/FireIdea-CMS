@@ -1,0 +1,32 @@
+感谢各位对本系统开发的支持和帮助
+
+龚毅书	sina.com	ms263@126.com		系统性能及数据处理方式顾问，加密解密
+顾伟刚	baidu.com	cnwggu@gmail.com	后台界面建议使用bootstrap from twitter，对界面提出很多建议
+孙鹏	pateo.com.cn	895617444@qq.com	定期捣乱，帮忙 XD
+魏明阳	pateo.com.cn	405923015@qq.com	后台权限及菜单建议
+夏新	pateo.com.cn	xiaxin@netags.com	关于项目管理建议
+影然    pateo.com.cn	yingran@yahoo.com	项目内JS指导
+蒲璞			3747368@qq.com		开拓视野，提供大量参考系统
+
+以及QQ群内32934649的兄弟们
+
+
+引用功能：
+http://bbs.thinkphp.cn/forum.php?mod=viewthread&tid=42397&extra=page%3D1 	pangdan118 发表的《tp中5分钟集成支付宝接口（附源码）》
+http://twitter.github.com/bootstrap/  						bootstrap from twitter
+http://code.google.com/a/apache-extras.org/p/phpmailer/				phpmailer
+
+计划参考
+http://bbs.thinkphp.cn/forum.php?mod=viewthread&tid=41895&extra=page%3D2	ucenter集成
+http://bbs.thinkphp.cn/forum.php?mod=viewthread&tid=1614&extra=page%3D1 	discuz集成参考
+http://www.baby666.cn/v3/ 							zTree v3
+http://dev.open.t.qq.com/							腾讯微薄接口
+http://wiki.opensns.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91%E6%96%87%E6%A1%A3%E8%B5%84%E6%BA%90 qq登录接口
+http://fancybox.net/
+http://www.itokit.com/2011/0916/69202.html   fckeditor with tp
+
+
+varnish http://wenku.baidu.com/view/027cb2bcf121dd36a32d8259.html
+ESI http://www.edge-delivery.org/index.html
+
+官方QQ交流群：181375258

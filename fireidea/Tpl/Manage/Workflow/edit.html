@@ -1,0 +1,42 @@
+<script src="__PUBLIC__/js/jquery-ui-1.8.18.custom.min.js"></script>
+<style>
+.sortable .placeholder { width: 80px; ; float:left; height: 40px; background-color: #FECA40; }
+.sortable li { float: left; margin-left:5px; }
+.sortable ul { width:100%; float: left; }
+</style>
+<script>
+	$(function() {
+		$( "#sortable" ).sortable({
+			placeholder: 'placeholder',
+			//handle:"i",
+			axis: 'x',
+			items:'li',
+			update: function(event, ui) 
+	        {
+            	$('.sortable .order').each(
+            	    function(index) {
+        	            $(this).val(index+1);
+                });
+	            $.ajax({type: "POST",url: "__URL__/workflowupdate",cache:false,data:$("#form9").serialize()});
+            	//window.location.reload();
+        	}
+		});
+		$( ".draggable" ).draggable({
+			connectToSortable: "#sortable",
+			helper: "clone",
+			revert: "invalid"
+		});
+		//$( "#sortable" ).disableSelection();
+	});
+</script>
+<h3> {$Think.lang.L_LIST_FIELD} </h3>
+<hr />
+<ul class="unstyled sortable ui-sortable" style="clear:right; height:140px;float:left; width:600px; overflow:scroll; overflow-y:hidden;" id="sortable">
+</ul>
+<ul  class="unstyled sortable ui-sortable" style="clear:both; height:140px;">
+  <li class="draggable well"> [列表] <a href="#"><i class="icon-cog"></i></a></li>
+  <li class="draggable well"> [修改] <a href="#"><i class="icon-cog"></i></a></li>
+  <li class="draggable well"> [添加] <a href="#"><i class="icon-cog"></i></a></li>
+  <li class="draggable well"> [接口] <a href="#"><i class="icon-cog"></i></a></li>
+</ul>
+<hr />
