@@ -3,24 +3,24 @@
 	var module='{$vo.keyword}';
 	function addfield(table_name)
 	{
-	  requesthtml("{:U('addfield')}","table_name="+table_name ,true);
+	  requestHtml("{:U('addfield')}","table_name="+table_name ,true);
 	}
 	function editfield(id)
 	{
-	  requesthtml("{:U('editfield')}","id="+id ,true);
+	  requestHtml("{:U('editfield')}","id="+id ,true);
 	}
 	function delfield(id)
 	{
-	  confim_del('{$Think.lang.L_ARE_YOU_SURE}','../../delfield/id/'+id+'.html');
+	  confirmJump('{$Think.lang.L_ARE_YOU_SURE}','../../delfield/id/'+id+'.html');
 	}
 	
 	function addtable()
 	{
-		requesthtml("{:U('addtable')}","module_keyword="+module ,true);
+		requestHtml("{:U('addtable')}","module_keyword="+module ,true);
 	}
 	function deltable(id)
 	{
-		confim_del('{$Think.lang.L_ARE_YOU_SURE}','../../deltable/id/'+id+'.html');
+		confirmJump('{$Think.lang.L_ARE_YOU_SURE}','../../deltable/id/'+id+'.html');
 	}
 </script>
 

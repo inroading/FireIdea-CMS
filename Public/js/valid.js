@@ -39,16 +39,16 @@ function doValidate(obj)
 	var types=$(obj).attr("vtype");//pattern values
 	var tips=$(obj).attr("tips");;//tips
 	var str=$(obj).attr("value");;//tips
-
+	if (!types) {return};
 	types=types.split("|"); //字符分割
 	tips=tips.split("|");
 	     
 	for (i=0;i<types.length ;i++ )   
     {   
-		if(trim(types[i])=="")continue;
+		if(allTrim(types[i])=="")continue;
 		if(types[i]=="notempty")
 		{
-			if(trim(str)=="")
+			if(allTrim(str)=="")
 			{
 				$(obj).parent().parent().addClass("error");
 				$(obj).parent().parent().removeClass("success");

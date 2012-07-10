@@ -2,19 +2,19 @@
   <script>
 	function do_update()
 	{
-		requesthtml("{:U('update_item')}",$("#ajaxform").serialize(),true);
+		requestHtml("{:U('update_item')}",$("#ajaxform").serialize(),true);
 	}
 	
 	function do_add(gid)
 	{
-	  requesthtml("{:U('add_item')}","gid="+gid,true);
+	  requestHtml("{:U('add_item')}","gid="+gid,true);
 	}
 	
 	function do_delete(id)
 	{
 	  if(confirm('{$Think.lang.L_ARE_YOU_SURE}'))
 	  {
-		requesthtml("{:U('del_item')}","id="+id,true);
+		requestHtml("{:U('del_item')}","id="+id,true);
 	  }
 	}
 </script>

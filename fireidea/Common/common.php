@@ -1,6 +1,6 @@
 <?php
 //友好显示日期
-function time_show($val)
+function getFriendDataTime($val)
 {
     $n_time = time();
     $d_time = strtotime($val);
@@ -33,7 +33,7 @@ function time_show($val)
 }
 
 //秒转换成24小时格式
-function format_second($sec)
+function second2time($sec)
 {
     $second = (int) ($sec % 60);
     $minute = intval(($sec % 3600) / 60);
@@ -80,7 +80,7 @@ function xml_addattr($dom, $innode, $attrname, $value)
 }
 
 //对参数进行转义用
-function base64_url_encode($str)
+function base64UrlEncode($str)
 {
     $pattern = array('0' => '00', '+' => '01', '/' => '02', '=' => '03',);
     $str = base64_encode($str);
@@ -88,43 +88,14 @@ function base64_url_encode($str)
 }
 
 //和上面配套使用
-function base64_url_decode($str)
+function base64UrlDecode($str)
 {
     $pattern = array('0' => '00', '+' => '01', '/' => '02', '=' => '03',);
     $str = strtr($str, array_flip($pattern));
     return base64_decode($str);
 }
 
-
-//检测验证码是否正确
-function check_verfiy()
-{
-	import("@.API.ConfigUtil");
-    $config = ConfigUtil::get_config_all();
-	if($config["config_img_valid"] != "true")
-	{
-		return true;
-	}
-	
-	if($_SESSION['verify'] != md5($_POST['verify'])) 
-	{
-    	return false;
-    }
-	return true;
-}
-//显示验证码
-function verfiycode_show()
-{
-    import("@.API.ConfigUtil");
-    $config = ConfigUtil::get_config_all();
-
-    if ($config["config_img_valid"] == "true")
-    {
-        return @'<input id="loginverfiy" class="verfiyfield" type="text" name="verfiycode" maxlength="4"/>
-        <img id="verfiyimage" class="verfiyimage"   src="__APP__/Public/verify/" onclick="this.src=\'__APP__/Public/verify/\'+Math.random();" title="' . L("click here to refresh") . '"/>';
-    }
-}
-//正则提取数值，只要数值部分
+//字符串只返回数值部分
 function parseInt($string)
 {
     if (preg_match('/(\d+)/', $string, $array))
@@ -138,13 +109,13 @@ function parseInt($string)
 }
 
 //输出重复前置符号
-function echoIndentString($level, $str = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
-{	
-    return str_repeat($str,$level);
+function echoIndentString($level, $str = "├ ─ ─")
+{   
+    return str_repeat('&nbsp;&nbsp;&nbsp;',$level*3).$str;
 }
 
-//文件管理器使用
-function list_url_path($url, $baseurl="fileselect")
+//获取树形节点
+function getArrayTreePath($url, $baseurl="fileselect")
 {
     $result = $url;
     $endindex = 0;
@@ -169,7 +140,7 @@ function list_url_path($url, $baseurl="fileselect")
 }
 
 //清空某个目录内所有文件
-function Dir_clear($dir)
+function delDirTree($dir)
 {
     if (!($handle = opendir($dir)))
     {
@@ -182,7 +153,7 @@ function Dir_clear($dir)
             $file = $dir . DIRECTORY_SEPARATOR . $file;
             if (is_dir($file))
             {
-                Dir_clear($file);
+                delDirTree($file);
             }
             else
             {
@@ -194,7 +165,7 @@ function Dir_clear($dir)
 }
 
 //图像显示函数，自动显示缩略图，如果没有缩略图显示源文件，如果没有源文件显示暂无图片
-function show_image($path, $prefix='', $fourtothree=false)
+function showImage($path, $prefix='', $fourtothree=false)
 {
 	$nopic = __ROOT__ . "/Public/images/nopic.gif";
     if ($path)
@@ -229,7 +200,7 @@ function show_image($path, $prefix='', $fourtothree=false)
     }
 }
 //curl 方式发送post请求
-function http_post($data_arr, $host, $port, $url, &$output)
+function postData($data_arr, $host, $port, $url, &$output)
 {
     $postdata = '';
     foreach (array_keys($data_arr) as $key)
@@ -259,7 +230,7 @@ function http_post($data_arr, $host, $port, $url, &$output)
 }
 
 //生成唯一GUID用于生成唯一标示用
-function get_guid()
+function getGuid()
 {
     $tmp = gettimeofday();
     $tmp = $tmp["sec"] . "-" . $tmp["usec"] . "-" . $tmp["minuteswest"];
@@ -267,7 +238,7 @@ function get_guid()
 }
 
 //获取当前系统最大可上传文件大小
-function get_upload_max_size()
+function getMaxUploadFileSize()
 {
     $POST_MAX_SIZE = ini_get('post_max_size');
     $mul = substr($POST_MAX_SIZE, -1);
@@ -296,7 +267,7 @@ function get_upload_max_size()
 }
 
 //GD图形处理库插件工作状态获取
-function get_gd_state()
+function getGDStatus()
 {
     if (extension_loaded("gd"))
     {
@@ -315,7 +286,7 @@ function get_gd_state()
     }
 }
 //根据数据生成下拉列表
-function show_select($id, $data, $key, $value, $select_value, $show_empty="", $show_empty_val="")
+function getSelectHtml($id, $data, $key, $value, $select_value, $show_empty="", $show_empty_val="")
 {
     $result = "<select id='" . $id . "' name='" . $id . "'>";
     if ($show_empty != "")
@@ -345,7 +316,7 @@ function show_select($id, $data, $key, $value, $select_value, $show_empty="", $s
 }
 
 //show select list tree
-function show_select_tree($data, $key, $value, $deep, $select_value, $show_empty="", $show_empty_val="")
+function getSelectTreeHtml($data, $key, $value, $deep, $select_value, $show_empty="", $show_empty_val="")
 {
     if ($show_empty != "")
     {
@@ -363,13 +334,13 @@ function show_select_tree($data, $key, $value, $deep, $select_value, $show_empty
         }
         if ($item["_child"])
         {
-            $result = $result . show_select_tree($item["_child"], $key, $value, $deep+1, $select_value);
+            $result = $result . getSelectTreeHtml($item["_child"], $key, $value, $deep+1, $select_value);
         }
     }
     return $result;
 }
 //自动填零
-function fill_zero($val, $len)
+function fillNumberZero($val, $len)
 {
     if (strlen($val) < $len)
     {
@@ -382,7 +353,7 @@ function fill_zero($val, $len)
 }
 
 //过长标题自动缩短
-function title_show($title, $length=20)
+function cutTitleString($title, $length=20)
 {
     $title = h($title);
     if (strlen($title) > $length)
@@ -395,7 +366,7 @@ function title_show($title, $length=20)
     }
 }
 //text filter
-function FP($string)
+function filterString($string)
 {
 	if(!get_magic_quotes_gpc() ) {
 		if(is_array($string)) {
@@ -410,7 +381,7 @@ function FP($string)
 }
 
 //recursive for html tree
-function tree_recursive($data,$template,$childtag,$htmltagarray,$keyarray,$level=0)
+function treeRecursive($data,$template,$childtag,$htmltagarray,$keyarray,$level=0)
 {
 	foreach($data as $dt)
 	{
@@ -432,19 +403,20 @@ function tree_recursive($data,$template,$childtag,$htmltagarray,$keyarray,$level
 		
 		if(isset($dt[$childtag]) && is_array($dt[$childtag]))
 		{
-			tree_recursive($dt[$childtag],$template,$childtag,$htmltagarray,$keyarray,$level+1);
+			treeRecursive($dt[$childtag],$template,$childtag,$htmltagarray,$keyarray,$level+1);
 		}
 	}
 }
+
 //递归算出树路径元素
-function get_tree_path($menu,$itemtag,$compareval)
+function getTreeNodePath($menu,$itemtag,$compareval)
 {
 	$return=array();
 	foreach($menu as $m)
 	{
 		if(isset($m[$itemtag]) && is_array($m[$itemtag]))
 		{
-			$result=get_tree_path($m[$itemtag]);
+			$result=getTreeNodePath($m[$itemtag]);
 			if($result!=null)
 			{
 				array_push($result,$m);
@@ -466,6 +438,15 @@ function get_tree_path($menu,$itemtag,$compareval)
 		}
 	}
 	return null;
+}
+//transform the array with special key for array key
+function arrangeArrayByKey($input,$key)
+{
+    $result = array();
+    foreach ($input as $value) {
+        $result[$value[$key]]=$value;
+    }
+    return $result;
 }
 
 //发送邮件
@@ -512,13 +493,15 @@ function SendMail($address,$title,$message)
 		$mail->AddAddress($address);
 	}
 	
-	$message = preg_replace('/[\]/i','',$message);
+	$message = preg_replace('/[\\]/i','',$message);
 	
 	$mail->Subject = $title;
 	$mail->MsgHTML($message);
-	$mail->AltBody = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
+	$mail->AltBody = "To view the message, please use an HTML compatible email viewer!"; 
+    // optional, comment out and test
 	$mail->Priority=1;
 	
     return $mail->Send();
 }
+
 ?>

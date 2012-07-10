@@ -13,7 +13,7 @@
       <td>{$vo.name|L}({$vo.name})</td>
       <td>{$vo.slug}</td>
       <td>{$vo.description}</td>
-      <td><a href="{:U('edit?id='.$vo['id'])}" ><i class="icon-edit" title="{$Think.lang.L_EDIT}"></i></a>&nbsp;<a href="{:U('manage?id='.$vo['id'])}" ><i title="{$Think.lang.L_MANAGE}" class="icon-th"></i></a>&nbsp;<a href="#" onclick="confim_del('{$Think.lang.L_ARE_YOU_SURE}','{:U('del?id='.$vo['id'])}');" ><i class="icon-remove" title="{$Think.lang.L_DELETE}" ></i></a></td>
+      <td><a href="{:U('edit?id='.$vo['id'])}" ><i class="icon-edit" title="{$Think.lang.L_EDIT}"></i></a>&nbsp;<a href="{:U('manage?id='.$vo['id'])}" ><i title="{$Think.lang.L_MANAGE}" class="icon-th"></i></a>&nbsp;<a href="#" onclick="confirmJump('{$Think.lang.L_ARE_YOU_SURE}','{:U('del?id='.$vo['id'])}');" ><i class="icon-remove" title="{$Think.lang.L_DELETE}" ></i></a></td>
     </tr>
   </volist>
   <tr>
